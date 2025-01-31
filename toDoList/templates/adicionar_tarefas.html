@@ -1,0 +1,17 @@
+
+
+<form action=" {% if editing %} {{ url_for('update', id_task=id_task) }} {% else %} {{ url_for('create') }} {% endif %}"  method="POST">
+    <fieldset>
+        {{ formTask.csrf_token }}
+        <legend>Digite sua tarefa aqui</legend>
+    
+        <div class="mb-3">
+            {{ formTask.description }}
+        </div>
+        {% if editing %}
+            {{ formTask.button_update }}
+        {% else %}
+            {{ formTask.button_create }}
+        {% endif %}
+    </fieldset>
+  </form>

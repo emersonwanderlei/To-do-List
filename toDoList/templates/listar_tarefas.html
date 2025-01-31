@@ -1,0 +1,39 @@
+
+
+<div class="container text-center">
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col"> Descrição </th>
+            <th scope="col"> Ações </th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for task in show_task %}
+          <tr>
+              <th scope="row"> {{ task.id }} </th>
+                <td>{{ task.description }}</td>
+                <td class="d-flex">
+                  <form action="{{ url_for('delete', id_task=task.id) }}" method="POST">
+                    {{ formTask.csrf_token }}
+                    {{ formTask.button_delete }}
+                  </form>
+                  <form action="{{ url_for('edit', id_task=task.id) }}" method="POST">
+                    {{ formTask.csrf_token }}
+                    {{ formTask.button_update }}
+                  </form>
+                </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>  
+    </div>
+    <div class="col">
+      
+    </div>
+    
+  </div>
+</div>
